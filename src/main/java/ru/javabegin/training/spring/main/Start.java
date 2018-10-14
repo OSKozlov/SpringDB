@@ -1,5 +1,7 @@
 package ru.javabegin.training.spring.main;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,8 +20,15 @@ public class Start {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		SQLiteDAO sqLiteDAO = (SQLiteDAO) context.getBean("sqliteDAO");
 
-		sqLiteDAO.insert(mp3);
-
+//		sqLiteDAO.insert(mp3);
+		List<MP3> list = sqLiteDAO.getMP3ListByAuthor("Ark");
+		System.out.println(list.size());
+		if (!list.isEmpty()) {
+			for(MP3 item : list) {
+				System.out.println("-- Author: " + item.getAuthor());
+				System.out.println("-- Name: " + item.getName());
+			}
+		}
 	}
 
 }

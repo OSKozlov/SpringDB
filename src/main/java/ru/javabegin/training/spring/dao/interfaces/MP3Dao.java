@@ -19,5 +19,7 @@ public interface MP3Dao {
 	List<MP3> getMP3ListByName(String name);
 	
 	List<MP3> getMP3ListByAuthor(String author);
+	
+	int getMP3Count();
 
 }
